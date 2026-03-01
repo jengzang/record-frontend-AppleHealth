@@ -9,6 +9,7 @@ import type {
   WeeklyPattern,
   HealthScore,
   WeightBMIAnalysis,
+  ExerciseAnalysis,
 } from '../types/health';
 
 const API_BASE_URL = 'http://localhost:9000/api/v1';
@@ -101,6 +102,12 @@ export const healthApiService = {
     if (endDate) params.end = endDate;
 
     const response = await api.get('/health/analysis/weight-bmi', { params });
+    return response.data;
+  },
+
+  // Exercise analysis
+  async getExerciseAnalysis(): Promise<ExerciseAnalysis> {
+    const response = await api.get('/health/analysis/exercise');
     return response.data;
   },
 };

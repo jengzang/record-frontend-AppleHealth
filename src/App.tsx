@@ -7,12 +7,14 @@ import {
   LineChartOutlined,
   BarChartOutlined,
   DashboardOutlined,
+  ThunderboltOutlined,
 } from '@ant-design/icons';
 import Home from './pages/Home';
 import HeartRate from './pages/HeartRate';
 import Trends from './pages/Trends';
 import Analysis from './pages/Analysis';
 import WeightBMI from './pages/WeightBMI';
+import Exercise from './pages/Exercise';
 import 'antd/dist/reset.css';
 
 const { Header, Content, Footer } = Layout;
@@ -30,6 +32,11 @@ const AppContent: React.FC = () => {
       key: '/heartrate',
       icon: <HeartOutlined />,
       label: <Link to="/heartrate">心率分析</Link>,
+    },
+    {
+      key: '/exercise',
+      icon: <ThunderboltOutlined />,
+      label: <Link to="/exercise">运动数据</Link>,
     },
     {
       key: '/weight-bmi',
@@ -66,6 +73,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/heartrate" element={<HeartRate />} />
+          <Route path="/exercise" element={<Exercise />} />
           <Route path="/weight-bmi" element={<WeightBMI />} />
           <Route path="/trends" element={<Trends />} />
           <Route path="/analysis" element={<Analysis />} />

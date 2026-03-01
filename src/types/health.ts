@@ -150,3 +150,82 @@ export interface WeightBMIAnalysis {
     dataPoints: number;
   };
 }
+
+// Exercise Analysis Types
+
+export interface ExerciseAnalysis {
+  summary: ExerciseSummary;
+  dailyStats: DailyExerciseStats[];
+  workoutTypes: WorkoutTypeStats[];
+  calorieTrend: CalorieDataPoint[];
+  intensityAnalysis: IntensityAnalysis;
+  achievements: Achievement[];
+  recommendations: string[];
+}
+
+export interface ExerciseSummary {
+  totalSteps: number;
+  totalDistance: number;
+  totalCalories: number;
+  totalWorkouts: number;
+  avgDailySteps: number;
+  avgDailyDistance: number;
+  avgDailyCalories: number;
+  activeDays: number;
+  mostActiveDay: string;
+  longestWorkout: number;
+  totalExerciseTime: number;
+}
+
+export interface DailyExerciseStats {
+  date: string;
+  steps: number;
+  distance: number;
+  calories: number;
+  flightsClimbed: number;
+  exerciseMinutes: number;
+  workoutCount: number;
+}
+
+export interface WorkoutTypeStats {
+  workoutType: string;
+  count: number;
+  totalDuration: number;
+  totalDistance: number;
+  totalCalories: number;
+  avgDuration: number;
+  avgDistance: number;
+  avgCalories: number;
+  percentage: number;
+}
+
+export interface CalorieDataPoint {
+  date: string;
+  activeCalories: number;
+  restingCalories: number;
+  totalCalories: number;
+}
+
+export interface IntensityAnalysis {
+  lowIntensity: IntensityStats;
+  moderateIntensity: IntensityStats;
+  highIntensity: IntensityStats;
+  avgMETs: number;
+  intensityScore: number;
+}
+
+export interface IntensityStats {
+  minutes: number;
+  percentage: number;
+  calories: number;
+}
+
+export interface Achievement {
+  title: string;
+  description: string;
+  value: number;
+  unit: string;
+  date: string;
+  type: string;
+}
+
