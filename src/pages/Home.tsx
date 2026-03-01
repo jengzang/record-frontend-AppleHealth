@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import HealthMetricCard from '../components/HealthMetricCard';
 import HeartRateChart from '../components/HeartRateChart';
 import { healthApiService } from '../services/healthApiService';
+import { METRIC_TYPES } from '../config/metricTypes';
 import type { HealthSummary, HealthStatistics } from '../types/health';
 
 const Home: React.FC = () => {
@@ -22,7 +23,7 @@ const Home: React.FC = () => {
       setLoading(true);
       const [summaryData, statsData] = await Promise.all([
         healthApiService.getSummary(),
-        healthApiService.getDailyStatistics('HeartRate', undefined, undefined, 30),
+        healthApiService.getDailyStatistics(METRIC_TYPES.HEART_RATE, undefined, undefined, 30),
       ]);
       setSummary(summaryData);
       setRecentStats(statsData.statistics);

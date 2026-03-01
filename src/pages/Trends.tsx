@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Tabs, Spin, message, Row, Col } from 'antd';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { healthApiService } from '../services/healthApiService';
+import { METRIC_TYPES } from '../config/metricTypes';
 import type { HealthStatistics, RestingHR, WeeklyPattern } from '../types/health';
 
 const Trends: React.FC = () => {
@@ -22,7 +23,7 @@ const Trends: React.FC = () => {
       const startDate = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
       const [statsData, restingData, patternData] = await Promise.all([
-        healthApiService.getDailyStatistics('HeartRate', startDate, endDate),
+        healthApiService.getDailyStatistics(METRIC_TYPES.HEART_RATE, startDate, endDate),
         healthApiService.getRestingHeartRate(startDate, endDate),
         healthApiService.getWeeklyActivityPattern(),
       ]);

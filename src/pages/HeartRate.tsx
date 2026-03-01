@@ -6,6 +6,7 @@ import HealthMetricCard from '../components/HealthMetricCard';
 import HeartRateChart from '../components/HeartRateChart';
 import ZoneDistribution from '../components/ZoneDistribution';
 import { healthApiService } from '../services/healthApiService';
+import { METRIC_TYPES } from '../config/metricTypes';
 import { formatBPM, formatDateTime, getSeverityColor } from '../utils/heartRateUtils';
 import type { HealthStatistics, HeartRateZones, Anomaly, DailyPattern } from '../types/health';
 
@@ -33,7 +34,7 @@ const HeartRate: React.FC = () => {
       const endDate = dateRange[1].format('YYYY-MM-DD');
 
       const [statsData, zonesData, anomaliesData, patternData] = await Promise.all([
-        healthApiService.getDailyStatistics('HeartRate', startDate, endDate),
+        healthApiService.getDailyStatistics(METRIC_TYPES.HEART_RATE, startDate, endDate),
         healthApiService.getHeartRateZones(startDate, endDate),
         healthApiService.getHeartRateAnomalies(startDate, endDate),
         healthApiService.getDailyActivityPattern(),
