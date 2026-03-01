@@ -10,6 +10,7 @@ import type {
   HealthScore,
   WeightBMIAnalysis,
   ExerciseAnalysis,
+  SleepAnalysis,
 } from '../types/health';
 
 const API_BASE_URL = 'http://localhost:9000/api/v1';
@@ -108,6 +109,12 @@ export const healthApiService = {
   // Exercise analysis
   async getExerciseAnalysis(): Promise<ExerciseAnalysis> {
     const response = await api.get('/health/analysis/exercise');
+    return response.data;
+  },
+
+  // Sleep analysis
+  async getSleepAnalysis(): Promise<SleepAnalysis> {
+    const response = await api.get('/health/analysis/sleep');
     return response.data;
   },
 };

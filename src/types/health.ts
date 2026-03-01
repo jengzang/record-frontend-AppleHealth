@@ -229,3 +229,78 @@ export interface Achievement {
   type: string;
 }
 
+// Sleep Analysis Types
+
+export interface SleepAnalysis {
+  summary: SleepSummary;
+  dailySleep: DailySleepStats[];
+  sleepStages: SleepStageDistribution;
+  sleepPattern: SleepPattern;
+  qualityScore: SleepQualityScore;
+  heartRateCorrelation: HeartRateCorrelation;
+  recommendations: string[];
+}
+
+export interface SleepSummary {
+  totalSleepDays: number;
+  avgSleepDuration: number;
+  avgDeepSleep: number;
+  avgLightSleep: number;
+  avgREMSleep: number;
+  avgBedTime: string;
+  avgWakeTime: string;
+  sleepEfficiency: number;
+  bestSleepDate: string;
+  worstSleepDate: string;
+}
+
+export interface DailySleepStats {
+  date: string;
+  totalSleep: number;
+  deepSleep: number;
+  lightSleep: number;
+  remSleep: number;
+  awakeTime: number;
+  bedTime: string;
+  wakeTime: string;
+  sleepQuality: number;
+  heartRateAvg: number;
+}
+
+export interface SleepStageDistribution {
+  deepSleepPercent: number;
+  lightSleepPercent: number;
+  remSleepPercent: number;
+  awakePercent: number;
+  totalMinutes: number;
+}
+
+export interface SleepPattern {
+  bedTimeConsistency: number;
+  wakeTimeConsistency: number;
+  weekdayAvgSleep: number;
+  weekendAvgSleep: number;
+  sleepDebt: number;
+  optimalBedTime: string;
+  optimalWakeTime: string;
+}
+
+export interface SleepQualityScore {
+  overallScore: number;
+  durationScore: number;
+  efficiencyScore: number;
+  consistencyScore: number;
+  deepSleepScore: number;
+  grade: string;
+}
+
+export interface HeartRateCorrelation {
+  avgSleepingHR: number;
+  avgWakingHR: number;
+  hrDrop: number;
+  hrDropPercent: number;
+  correlation: number;
+  insight: string;
+}
+
+
