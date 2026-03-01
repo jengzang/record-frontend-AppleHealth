@@ -117,4 +117,10 @@ export const healthApiService = {
     const response = await api.get('/health/analysis/sleep');
     return response.data;
   },
+
+  // Seasonal trends
+  async getSeasonalTrends(): Promise<any> {
+    const response = await api.get('/health/analysis/seasonal-trends');
+    return response.data;
+  },
 };

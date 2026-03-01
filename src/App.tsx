@@ -9,6 +9,7 @@ import {
   DashboardOutlined,
   ThunderboltOutlined,
   MoonOutlined,
+  CalendarOutlined,
 } from '@ant-design/icons';
 import Home from './pages/Home';
 import HeartRate from './pages/HeartRate';
@@ -17,6 +18,7 @@ import Analysis from './pages/Analysis';
 import WeightBMI from './pages/WeightBMI';
 import Exercise from './pages/Exercise';
 import Sleep from './pages/Sleep';
+import SeasonalTrends from './pages/SeasonalTrends';
 import 'antd/dist/reset.css';
 
 const { Header, Content, Footer } = Layout;
@@ -51,6 +53,11 @@ const AppContent: React.FC = () => {
       label: <Link to="/weight-bmi">体重BMI</Link>,
     },
     {
+      key: '/seasonal-trends',
+      icon: <CalendarOutlined />,
+      label: <Link to="/seasonal-trends">季节趋势</Link>,
+    },
+    {
       key: '/trends',
       icon: <LineChartOutlined />,
       label: <Link to="/trends">趋势</Link>,
@@ -83,6 +90,7 @@ const AppContent: React.FC = () => {
           <Route path="/sleep" element={<Sleep />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/weight-bmi" element={<WeightBMI />} />
+          <Route path="/seasonal-trends" element={<SeasonalTrends />} />
           <Route path="/trends" element={<Trends />} />
           <Route path="/analysis" element={<Analysis />} />
         </Routes>
