@@ -117,3 +117,36 @@ export interface HealthScorePoint {
   grade: string;
 }
 
+// Weight and BMI Analysis Types
+
+export interface WeightDataPoint {
+  date: string;
+  weight: number;
+  bmi: number;
+}
+
+export interface WeightPrediction {
+  predictedWeight: number;
+  predictedBMI: number;
+  targetDate: string;
+  confidence: number;
+  trend: string;
+}
+
+export interface WeightBMIAnalysis {
+  currentWeight: number;
+  currentBMI: number;
+  bmiCategory: string;
+  healthStatus: string;
+  weightTrend: WeightDataPoint[];
+  prediction: WeightPrediction;
+  recommendations: string[];
+  statistics: {
+    minWeight: number;
+    maxWeight: number;
+    avgWeight: number;
+    weightChange: number;
+    changePercentage: number;
+    dataPoints: number;
+  };
+}

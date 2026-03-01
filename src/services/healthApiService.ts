@@ -8,6 +8,7 @@ import type {
   DailyPattern,
   WeeklyPattern,
   HealthScore,
+  WeightBMIAnalysis,
 } from '../types/health';
 
 const API_BASE_URL = 'http://localhost:9000/api/v1';
@@ -90,6 +91,16 @@ export const healthApiService = {
     if (date) params.date = date;
 
     const response = await api.get('/health/analysis/health-score', { params });
+    return response.data;
+  },
+
+  // Weight and BMI analysis
+  async getWeightBMIAnalysis(startDate?: string, endDate?: string): Promise<WeightBMIAnalysis> {
+    const params: Record<string, string> = {};
+    if (startDate) params.start = startDate;
+    if (endDate) params.end = endDate;
+
+    const response = await api.get('/health/analysis/weight-bmi', { params });
     return response.data;
   },
 };
