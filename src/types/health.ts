@@ -303,4 +303,56 @@ export interface HeartRateCorrelation {
   insight: string;
 }
 
+// Health-Screentime Correlation Types
+
+export interface HealthScreentimeCorrelation {
+  balanceScore: number;
+  sedentaryAnalysis: SedentaryAnalysis;
+  activityCorrelation: ActivityCorrelation;
+  sleepImpact: SleepImpact;
+  recommendations: string[];
+}
+
+export interface SedentaryAnalysis {
+  sedentaryDays: number;
+  totalDays: number;
+  sedentaryRate: number;
+  avgScreenTimeOnSedentaryDays: number;
+  avgStepsOnSedentaryDays: number;
+  highRiskDays: number;
+  mediumRiskDays: number;
+  lowRiskDays: number;
+  sedentaryDayDetails: SedentaryDayDetail[];
+}
+
+export interface SedentaryDayDetail {
+  date: string;
+  screenTime: number;
+  steps: number;
+  riskLevel: string;
+}
+
+export interface ActivityCorrelation {
+  correlationCoefficient: number;
+  correlationType: string;
+  avgSteps: number;
+  avgScreenTime: number;
+  dataPoints: ActivityDataPoint[];
+}
+
+export interface ActivityDataPoint {
+  date: string;
+  steps: number;
+  screenTime: number;
+}
+
+export interface SleepImpact {
+  avgSleepWithLateScreenTime: number;
+  avgSleepWithoutLateScreenTime: number;
+  sleepDifference: number;
+  lateScreenTimeDays: number;
+  normalDays: number;
+  impactLevel: string;
+}
+
 

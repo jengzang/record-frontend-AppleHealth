@@ -11,6 +11,7 @@ import type {
   WeightBMIAnalysis,
   ExerciseAnalysis,
   SleepAnalysis,
+  HealthScreentimeCorrelation,
 } from '../types/health';
 
 const API_BASE_URL = 'http://localhost:9000/api/v1';
@@ -121,6 +122,12 @@ export const healthApiService = {
   // Seasonal trends
   async getSeasonalTrends(): Promise<any> {
     const response = await api.get('/health/analysis/seasonal-trends');
+    return response.data;
+  },
+
+  // Health-Screentime correlation
+  async getHealthScreentimeCorrelation(): Promise<HealthScreentimeCorrelation> {
+    const response = await api.get('/health/analysis/health-screentime-correlation');
     return response.data;
   },
 };

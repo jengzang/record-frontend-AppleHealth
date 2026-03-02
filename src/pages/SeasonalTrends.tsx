@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Spin, Alert, Row, Col, Statistic, Tabs, Table, Tag } from 'antd';
+import { Card, Spin, Alert, Row, Col, Statistic, Tabs, Table } from 'antd';
 import { TrophyOutlined, RiseOutlined, FallOutlined, LineChartOutlined } from '@ant-design/icons';
 import {
-  BarChart, Bar, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
+  LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-import { healthApi } from '../services/healthApiService';
+import { healthApiService } from '../services/healthApiService';
 
 interface SeasonalStat {
   season: string;
@@ -78,7 +78,7 @@ const SeasonalTrends: React.FC = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const result = await healthApi.getSeasonalTrends();
+      const result = await healthApiService.getSeasonalTrends();
       setData(result);
       setError(null);
     } catch (err) {
@@ -311,7 +311,15 @@ const SeasonalTrends: React.FC = () => {
       </Card>
 
       {/* 洞察 */}
-      <Card title="健康洞察" icon={<TrophyOutlined />} style={{ marginBottom: '24px' }}>
+      <Card
+        title={
+          <span>
+            <TrophyOutlined style={{ marginRight: '8px', color: '#faad14' }} />
+            健康洞察
+          </span>
+        }
+        style={{ marginBottom: '24px' }}
+      >
         <ul>
           {data.insights.map((insight, idx) => (
             <li key={idx} style={{ marginBottom: '8px' }}>{insight}</li>
