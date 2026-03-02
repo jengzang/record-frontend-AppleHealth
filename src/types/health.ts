@@ -355,4 +355,44 @@ export interface SleepImpact {
   impactLevel: string;
 }
 
+// Health Rankings Types
+
+export interface RankingEntry {
+  rank: number;
+  date: string;
+  value: number;
+  unit: string;
+  description: string;
+  isCurrent: boolean;
+}
+
+export interface PersonalBests {
+  maxSteps: RankingEntry;
+  maxDistance: RankingEntry;
+  maxCalories: RankingEntry;
+  lowestRestingHR: RankingEntry;
+  longestSleep: RankingEntry;
+  longestWorkout: RankingEntry;
+  mostWorkoutsDay: RankingEntry;
+}
+
+export interface RankingSummary {
+  totalDaysTracked: number;
+  top10DaysPercent: number;
+  currentStreak: number;
+  longestStreak: number;
+  averageRank: number;
+  improvement: string;
+}
+
+export interface HealthRankings {
+  stepsRankings: RankingEntry[];
+  distanceRankings: RankingEntry[];
+  caloriesRankings: RankingEntry[];
+  heartRateRankings: RankingEntry[];
+  sleepRankings: RankingEntry[];
+  workoutRankings: RankingEntry[];
+  personalBests: PersonalBests;
+  summary: RankingSummary;
+}
 

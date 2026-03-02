@@ -12,6 +12,7 @@ import type {
   ExerciseAnalysis,
   SleepAnalysis,
   HealthScreentimeCorrelation,
+  HealthRankings,
 } from '../types/health';
 
 const API_BASE_URL = 'http://localhost:9000/api/v1';
@@ -128,6 +129,12 @@ export const healthApiService = {
   // Health-Screentime correlation
   async getHealthScreentimeCorrelation(): Promise<HealthScreentimeCorrelation> {
     const response = await api.get('/health/analysis/health-screentime-correlation');
+    return response.data;
+  },
+
+  // Health rankings
+  async getHealthRankings(): Promise<HealthRankings> {
+    const response = await api.get('/health/analysis/rankings');
     return response.data;
   },
 };
