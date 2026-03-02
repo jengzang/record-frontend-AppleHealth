@@ -11,6 +11,7 @@ import {
   MoonOutlined,
   CalendarOutlined,
   InteractionOutlined,
+  RiseOutlined,
 } from '@ant-design/icons';
 import Home from './pages/Home';
 import HeartRate from './pages/HeartRate';
@@ -21,6 +22,8 @@ import Exercise from './pages/Exercise';
 import Sleep from './pages/Sleep';
 import SeasonalTrends from './pages/SeasonalTrends';
 import HealthScreentimeCorrelation from './pages/HealthScreentimeCorrelation';
+import EfficiencyCurveDashboard from './pages/EfficiencyCurveDashboard';
+import EfficiencyComparison from './pages/EfficiencyComparison';
 import 'antd/dist/reset.css';
 
 const { Header, Content, Footer } = Layout;
@@ -53,6 +56,11 @@ const AppContent: React.FC = () => {
       key: '/weight-bmi',
       icon: <DashboardOutlined />,
       label: <Link to="/weight-bmi">体重BMI</Link>,
+    },
+    {
+      key: '/efficiency-curve',
+      icon: <RiseOutlined />,
+      label: <Link to="/efficiency-curve">效率曲线</Link>,
     },
     {
       key: '/health-screentime-correlation',
@@ -97,6 +105,8 @@ const AppContent: React.FC = () => {
           <Route path="/sleep" element={<Sleep />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/weight-bmi" element={<WeightBMI />} />
+          <Route path="/efficiency-curve" element={<EfficiencyCurveDashboard />} />
+          <Route path="/efficiency-comparison" element={<EfficiencyComparison />} />
           <Route path="/health-screentime-correlation" element={<HealthScreentimeCorrelation />} />
           <Route path="/seasonal-trends" element={<SeasonalTrends />} />
           <Route path="/trends" element={<Trends />} />
