@@ -13,6 +13,8 @@ import {
   InteractionOutlined,
   RiseOutlined,
   TrophyOutlined,
+  EnvironmentOutlined,
+  FireOutlined,
 } from '@ant-design/icons';
 import Home from './pages/Home';
 import HeartRate from './pages/HeartRate';
@@ -26,6 +28,10 @@ import HealthScreentimeCorrelation from './pages/HealthScreentimeCorrelation';
 import EfficiencyCurveDashboard from './pages/EfficiencyCurveDashboard';
 import EfficiencyComparison from './pages/EfficiencyComparison';
 import Rankings from './pages/Rankings';
+import LocationMapView from './pages/LocationMapView';
+import LocationRankings from './pages/LocationRankings';
+import LocationDetail from './pages/LocationDetail';
+import HabitsDashboard from './pages/HabitsDashboard';
 import 'antd/dist/reset.css';
 
 const { Header, Content, Footer } = Layout;
@@ -68,6 +74,28 @@ const AppContent: React.FC = () => {
       key: '/efficiency-curve',
       icon: <RiseOutlined />,
       label: <Link to="/efficiency-curve">效率曲线</Link>,
+    },
+    {
+      key: '/location-behavior',
+      icon: <EnvironmentOutlined />,
+      label: '地点行为',
+      children: [
+        {
+          key: '/location-behavior/map',
+          icon: <EnvironmentOutlined />,
+          label: <Link to="/location-behavior/map">地点地图</Link>,
+        },
+        {
+          key: '/location-behavior/rankings',
+          icon: <TrophyOutlined />,
+          label: <Link to="/location-behavior/rankings">效率排行</Link>,
+        },
+        {
+          key: '/location-behavior/habits',
+          icon: <FireOutlined />,
+          label: <Link to="/location-behavior/habits">习惯分析</Link>,
+        },
+      ],
     },
     {
       key: '/health-screentime-correlation',
@@ -115,6 +143,10 @@ const AppContent: React.FC = () => {
           <Route path="/rankings" element={<Rankings />} />
           <Route path="/efficiency-curve" element={<EfficiencyCurveDashboard />} />
           <Route path="/efficiency-comparison" element={<EfficiencyComparison />} />
+          <Route path="/location-behavior/map" element={<LocationMapView />} />
+          <Route path="/location-behavior/rankings" element={<LocationRankings />} />
+          <Route path="/location-behavior/habits" element={<HabitsDashboard />} />
+          <Route path="/location-behavior/detail/:id" element={<LocationDetail />} />
           <Route path="/health-screentime-correlation" element={<HealthScreentimeCorrelation />} />
           <Route path="/seasonal-trends" element={<SeasonalTrends />} />
           <Route path="/trends" element={<Trends />} />
